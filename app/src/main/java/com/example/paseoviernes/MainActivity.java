@@ -63,15 +63,29 @@ public class MainActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-
+                        Toast.makeText(MainActivity.this, "Datos guardados!", Toast.LENGTH_SHORT).show();
+                        limpiarCampos();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        Toast.makeText(MainActivity.this, "Error, guardando campos!", Toast.LENGTH_SHORT).show();
                     }
                 });
         }
+    }
+
+    public void cancelar(View view) {
+        limpiarCampos();
+    }
+
+    private void limpiarCampos() {
+        etCodigo.setText("");
+        etNombre.setText("");
+        etCiudad.setText("");
+        etCantidad.setText("");
+        cbActivo.setText("");
+        etCodigo.requestFocus();
     }
 }
